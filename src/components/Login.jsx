@@ -3,7 +3,7 @@ import axios from "axios";
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/userSlice";
 import { useNavigate } from "react-router-dom";
-import {BASE_URL} from "../utils/constants";
+import { BASE_URL } from "../utils/constants";
 
 const Login = () => {
     const [emailId, setEmailId] = useState('sarthakgarg@gmail.com');
@@ -20,14 +20,13 @@ const Login = () => {
                 {
                     withCredentials: true
                 });
-                dispatch(addUser(res.data))
-                return navigate('/');
+            dispatch(addUser(res.user))
+            return navigate('/');
         }
         catch (err) {
-            console.log(err);
+            console.error(err);
         }
     }
-
     return (
         <div className="flex justify-center m-6">
             <div className="card bg-base-300 w-96 shadow-xl">
