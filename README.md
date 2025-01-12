@@ -21,6 +21,8 @@
         - sudo scp -r dist/* /var/www/html/
     - Enable port 80 on your instance
         - Instance => Security => Security Group => Edit inbound rules => add port 80 and save
+    
+    Note: should create a build again and copy it to /var/www/html/ everytime there are changes in frontend.
 
 - Backend
     - npm install
@@ -53,4 +55,12 @@
         proxy_set_header Host $host;
         proxy_cache_bypass $http_upgrade;
     }
+
+# Addding a custom Domain name
+- purchased domain name from godaddy
+- signup on cloudflare & add a new domain name
+- change the nameservers on godaddy and point it to cloudflare
+- wait for sometime till your nameservers are updated ~15 minutes
+- DNS record: A devtinder.in 43.204.96.49
+- Enable SSL for website 
 
